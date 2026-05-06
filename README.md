@@ -1,4 +1,4 @@
-# 🌐 WhatsTrendingToday.com
+# 🌐 WhatsTrendingToday
 
 > Real-time trending content from YouTube, TikTok, Instagram Reels, Reddit, X/Twitter and Google Trends — all in one place. Browse by day. AI-summarised.
 
