@@ -8,7 +8,13 @@ export async function fetchGoogleTrends(count = 5): Promise<TrendItem[]> {
     const googleTrends = await import("google-trends-api").catch(() => null);
     if (!googleTrends) return getMockGoogleTrends();
 
-    const result = await googleTrends.default.dailyTrends({ geo: "US" });
+    const result = await googleTrends.dailyTrends({ geo: "US" });
+    // Check if response is HTML (API is broken)
+    if (result.trim().startsWith('<!')) {
+      console.warn("[Google Trends] API returned HTML instead of JSON, using mock data");
+      return getMockGoogleTrends();
+    }
+
     const parsed = JSON.parse(result);
     const trending = parsed?.default?.trendingSearchesDays?.[0]?.trendingSearches ?? [];
 

@@ -48,20 +48,25 @@ export async function generateEditorNote(digest: Partial<DailyDigest>): Promise<
     return "Today's trending content spans entertainment, gaming, K-pop, and technology — with gaming and streaming dominating cross-platform conversation for the second week running.";
   }
 
-  const topItems = [
-    ...(digest.platforms?.youtube?.slice(0, 2) ?? []),
-    ...(digest.platforms?.tiktok?.slice(0, 1) ?? []),
-    ...(digest.platforms?.reddit?.slice(0, 1) ?? []),
-  ].map(i => `${i.platform}: "${i.title}"`).join("\n");
+  try {
+    const topItems = [
+      ...(digest.platforms?.youtube?.slice(0, 2) ?? []),
+      ...(digest.platforms?.tiktok?.slice(0, 1) ?? []),
+      ...(digest.platforms?.reddit?.slice(0, 1) ?? []),
+    ].map(i => `${i.platform}: "${i.title}"`).join("\n");
 
-  const res = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: 200,
-    messages: [{
-      role: "user",
-      content: `Write a 2-sentence editor's note for today's trending digest. Be insightful about what these trends collectively say about culture/society right now. Trending items:\n${topItems}\n\nReturn only the 2-sentence note, no labels.`,
-    }],
-  });
+    const res = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 200,
+      messages: [{
+        role: "user",
+        content: `Write a 2-sentence editor's note for today's trending digest. Be insightful about what these trends collectively say about culture/society right now. Trending items:\n${topItems}\n\nReturn only the 2-sentence note, no labels.`,
+      }],
+    });
 
-  return res.content[0].type === "text" ? res.content[0].text.trim() : "";
+    return res.content[0].type === "text" ? res.content[0].text.trim() : "";
+  } catch (error) {
+    console.warn("[AI] Failed to generate editor note:", (error as Error).message);
+    return "Today's trends reflect the continued dominance of short-form video and community-driven content across every major platform.";
+  }
 }

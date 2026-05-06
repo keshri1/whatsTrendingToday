@@ -10,22 +10,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "^14.2.0",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
     "@anthropic-ai/sdk": "^0.24.0",
     "@prisma/client": "^5.15.0",
     "axios": "^1.7.2",
-    "date-fns": "^3.6.0",
-    "next-themes": "^0.3.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.3.0",
-    "lucide-react": "^0.383.0",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.2.0",
-    "sharp": "^0.33.4",
+    "google-trends-api": "^4.9.2",
+    "lucide-react": "^0.383.0",
+    "next": "^14.2.0",
+    "next-themes": "^0.3.0",
     "p-limit": "^6.1.0",
-    "zod": "^3.23.8",
-    "google-trends-api": "^4.9.2"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "sharp": "^0.33.4",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
