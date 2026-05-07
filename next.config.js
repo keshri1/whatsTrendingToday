@@ -1,3 +1,4 @@
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -7,6 +8,7 @@ const nextConfig = {
       { protocol: "https", hostname: "*.redd.it" },
       { protocol: "https", hostname: "*.cdninstagram.com" },
       { protocol: "https", hostname: "placehold.co" },
+      { protocol: "https", hostname: "*.placeholder.com" },
       { protocol: "https", hostname: "*.p16-sign.tiktokcdn.com" },
       { protocol: "https", hostname: "*.tiktokcdn.com" },
     ],

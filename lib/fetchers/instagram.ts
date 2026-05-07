@@ -74,7 +74,7 @@ function getMockInstagram(): TrendItem[] {
       title: "#GlowUp Transformation Reel",
       description: "6-month fitness transformation reel hitting 2.1M plays in 3 days. The \"before/after + process\" format continues to dominate Reels engagement.",
       url: "https://instagram.com/explore/tags/glowup/",
-      thumbnailUrl: "https://placehold.co/400x500/1a0a2e/E1306C?text=Reel+1",
+      
       viewCount: 2100000, likeCount: 310000, commentCount: 8900,
       engagementRate: 15.2, author: "#GlowUp",
       publishedAt: new Date().toISOString(), tags: ["glowup", "fitness", "transformation"],
@@ -84,7 +84,7 @@ function getMockInstagram(): TrendItem[] {
       title: "#AIArt Week Challenge",
       description: "\"Turn your selfie into Renaissance art\" challenge. 4.8M posts in 48 hours, fuelled by a new free AI tool that requires no signup.",
       url: "https://instagram.com/explore/tags/aiart/",
-      thumbnailUrl: "https://placehold.co/400x500/1a0a2e/E1306C?text=Reel+2",
+      
       viewCount: 4800000, likeCount: 890000, commentCount: 34000,
       engagementRate: 19.2, author: "#AIArt",
       publishedAt: new Date().toISOString(), tags: ["aiart", "challenge", "viral"],
@@ -94,7 +94,7 @@ function getMockInstagram(): TrendItem[] {
       title: "#SilentWalking Trend",
       description: "The \"silent walking\" wellness trend — walking 20 minutes with no phone, no music. 9M posts globally. Gen Z's reaction to digital burnout is going analogue.",
       url: "https://instagram.com/explore/tags/silentwalking/",
-      thumbnailUrl: "https://placehold.co/400x500/1a0a2e/E1306C?text=Reel+3",
+      
       viewCount: 9000000, likeCount: 1200000, commentCount: 45000,
       engagementRate: 13.8, author: "#SilentWalking",
       publishedAt: new Date().toISOString(), tags: ["wellness", "mindfulness", "viral"],
@@ -104,7 +104,7 @@ function getMockInstagram(): TrendItem[] {
       title: "#BookTok Meets Reels",
       description: "BookTok crosses to Instagram with 30-second \"book aesthetic\" reels. Cozy reading corners + ambient music driving massive saves (the metric Instagram's algorithm now weights most).",
       url: "https://instagram.com/explore/tags/booktok/",
-      thumbnailUrl: "https://placehold.co/400x500/1a0a2e/E1306C?text=Reel+4",
+      
       viewCount: 6200000, likeCount: 780000, commentCount: 22000,
       engagementRate: 12.9, author: "#BookTok",
       publishedAt: new Date().toISOString(), tags: ["books", "aesthetic", "cozy"],
@@ -114,7 +114,7 @@ function getMockInstagram(): TrendItem[] {
       title: "#HouseOfDragon Fan Edits",
       description: "Fan-made trailer edits and reaction reels flooding Explore after the S3 teaser. Dragon CGI breakdowns are particularly viral among VFX communities.",
       url: "https://instagram.com/explore/tags/houseofthedragon/",
-      thumbnailUrl: "https://placehold.co/400x500/1a0a2e/E1306C?text=Reel+5",
+      
       viewCount: 3400000, likeCount: 420000, commentCount: 18000,
       engagementRate: 12.9, author: "#HouseOfDragon",
       publishedAt: new Date().toISOString(), tags: ["HouseOfDragon", "fanart", "HBO"],

@@ -9,7 +9,7 @@ import TrendGrid from "@/components/platform/TrendGrid";
 import TrendGridSkeleton from "@/components/ui/TrendGridSkeleton";
 import Footer from "@/components/layout/Footer";
 
-export const revalidate = 3600; // ISR: rebuild every hour
+export const dynamic = "force-dynamic"; // always run fresh — TrendGrid handles its own caching
 
 interface PageProps {
   searchParams: { date?: string };

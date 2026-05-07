@@ -58,7 +58,7 @@ function getMockTikTok(): TrendItem[] {
       title: "POV: You ask AI to explain quantum computing in 60 seconds",
       description: "The most mind-bending 60 seconds on the internet right now.",
       url: "https://tiktok.com/@scienceguy/video/tt1",
-      thumbnailUrl: "https://placehold.co/400x700/0d1117/00F2EA?text=TikTok+1",
+      
       viewCount: 48200000, likeCount: 4100000, commentCount: 87000,
       shareCount: 1200000, engagementRate: 11.1,
       author: "@scienceguy", duration: "0m 58s",
@@ -69,7 +69,7 @@ function getMockTikTok(): TrendItem[] {
       title: "Cooking the world's most expensive omelette ($1,200) 🍳",
       description: "White truffle, Wagyu beef, and gold leaf. Is it worth it?",
       url: "https://tiktok.com/@chefmax/video/tt2",
-      thumbnailUrl: "https://placehold.co/400x700/0d1117/00F2EA?text=TikTok+2",
+      
       viewCount: 31000000, likeCount: 2900000, commentCount: 145000,
       shareCount: 890000, engagementRate: 10.1,
       author: "@chefmax", duration: "2m 14s",
@@ -80,7 +80,7 @@ function getMockTikTok(): TrendItem[] {
       title: "This dog learned to type. No, seriously.",
       description: "Koda the Golden Retriever has 14 million followers and now sends emails.",
       url: "https://tiktok.com/@kodadog/video/tt3",
-      thumbnailUrl: "https://placehold.co/400x700/0d1117/00F2EA?text=TikTok+3",
+      
       viewCount: 28000000, likeCount: 5600000, commentCount: 210000,
       shareCount: 1400000, engagementRate: 21.5,
       author: "@kodadog", duration: "0m 32s",
@@ -91,7 +91,7 @@ function getMockTikTok(): TrendItem[] {
       title: "Duet this with your reaction to 2016 you 👁️",
       description: "The viral duet chain that has 800M stitches. Where were you in 2016?",
       url: "https://tiktok.com/@nostalgiavibes/video/tt4",
-      thumbnailUrl: "https://placehold.co/400x700/0d1117/00F2EA?text=TikTok+4",
+      
       viewCount: 19000000, likeCount: 1700000, commentCount: 390000,
       shareCount: 2100000, engagementRate: 22.0,
       author: "@nostalgiavibes", duration: "0m 15s",
@@ -102,7 +102,7 @@ function getMockTikTok(): TrendItem[] {
       title: "I quit my $300k job to move to a farm. One year later.",
       description: "Burnout, bees, goats, and absolutely zero regrets. Full update.",
       url: "https://tiktok.com/@farmlife/video/tt5",
-      thumbnailUrl: "https://placehold.co/400x700/0d1117/00F2EA?text=TikTok+5",
+      
       viewCount: 15000000, likeCount: 2300000, commentCount: 187000,
       shareCount: 780000, engagementRate: 20.4,
       author: "@farmlife_reset", duration: "3m 02s",

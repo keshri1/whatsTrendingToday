@@ -3,16 +3,76 @@ import { PLATFORM_CONFIG } from "@/types";
 import TrendCard from "./TrendCard";
 import EditorNote from "./EditorNote";
 import TopStoryHero from "./TopStoryHero";
+import { getCachedDigest, setCachedDigest, todayKey } from "@/lib/cache";
+import { fetchYouTubeTrending } from "@/lib/fetchers/youtube";
+import { fetchTikTokTrending } from "@/lib/fetchers/tiktok";
+import { fetchRedditTrending } from "@/lib/fetchers/reddit";
+import { fetchInstagramTrending } from "@/lib/fetchers/instagram";
+import { fetchTwitterTrending } from "@/lib/fetchers/twitter";
+import { fetchGoogleTrends } from "@/lib/fetchers/google-trends";
+import { analyseItems, generateEditorNote } from "@/lib/ai/analyse";
 
 async function getDigest(date: string): Promise<DailyDigest | null> {
   try {
-    const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${base}/api/trends?date=${date}`, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return null;
-    return res.json();
-  } catch {
+    // Always try cache first
+    const cached = await getCachedDigest(date);
+    if (cached) return cached;
+
+    // Only fetch live data for today (past dates are cache-only)
+    if (date !== todayKey()) return null;
+
+    // Fetch all platforms in parallel — direct function calls, no HTTP
+    const [youtube, tiktok, reddit, instagram, twitter, google] =
+      await Promise.allSettled([
+        fetchYouTubeTrending(5),
+        fetchTikTokTrending(5),
+        fetchRedditTrending(5),
+        fetchInstagramTrending(5),
+        fetchTwitterTrending(5),
+        fetchGoogleTrends(5),
+      ]);
+
+    const resolve = <T,>(r: PromiseSettledResult<T>, fallback: T): T =>
+      r.status === "fulfilled" ? r.value : fallback;
+
+    const platforms = {
+      youtube:   resolve(youtube,   []),
+      tiktok:    resolve(tiktok,    []),
+      reddit:    resolve(reddit,    []),
+      instagram: resolve(instagram, []),
+      twitter:   resolve(twitter,   []),
+      google:    resolve(google,    []),
+    };
+
+    // AI analysis on YouTube (most valuable, most expensive — limit scope)
+    if (process.env.ANTHROPIC_API_KEY) {
+      platforms.youtube = await analyseItems(platforms.youtube);
+    }
+
+    const allItems = Object.values(platforms).flat();
+    const topStory = [...allItems].sort(
+      (a, b) => (b.viewCount ?? 0) - (a.viewCount ?? 0)
+    )[0];
+
+    const digest: DailyDigest = {
+      date,
+      generatedAt: new Date().toISOString(),
+      platforms,
+      topStory,
+      editorNote: "",
+    };
+
+    if (process.env.ANTHROPIC_API_KEY) {
+      digest.editorNote = await generateEditorNote(digest);
+    } else {
+      digest.editorNote =
+        "Today's trends reflect the continued dominance of short-form video and community-driven content across every major platform.";
+    }
+
+    await setCachedDigest(digest);
+    return digest;
+  } catch (err) {
+    console.error("[TrendGrid] getDigest failed:", err);
     return null;
   }
 }
